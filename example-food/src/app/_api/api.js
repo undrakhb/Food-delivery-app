@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const server = axios.create({
   // Set NEXT_PUBLIC_API_URL once the server is deployed somewhere else.
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:1000",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://food-delivery-app-orcin-beta.vercel.app",
   headers: { "Content-Type": "application/json" },
 });
 
