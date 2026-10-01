@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import mongoose from "mongoose";
 import "dotenv/config";
 
 import { connectDB } from "./connectDB.js";
@@ -19,7 +20,10 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 connectDB();
 
 app.get("/api/health", (request, response) => {
-  response.json({ message: `API HEALTHY RUNNING ON ${PORT}` });
+  response.json({
+    message: `API HEALTHY RUNNING ON ${PORT}`,
+    database: mongoose.STATES[mongoose.connection.readyState],
+  });
 });
 
 app.use("/auth", authRouter);
